@@ -10,11 +10,7 @@ function moveDodgerLeft() {
         dodger.style.left = `${left - 1}px`;
     }
 }
-document.addEventListener("keydown", function (e) {
-    if (e.key === "ArrowLeft") {
-        moveDodgerLeft();
-    }
-});
+
 
 function moveDodgerRight() {
     var leftNumbers = dodger.style.left.replace('px', '');
@@ -23,8 +19,33 @@ function moveDodgerRight() {
         dodger.style.left = `${left + 1}px`
     }
 }
-document.addEventListener('keydown', function (e) {
-    if (e.key === "ArrowRight") {
+
+function moveDodgerUp(){
+    const bottomNumbers = dodger.style.bottom.replace("px", "")
+    const bottom = parseInt(bottomNumbers, 10)
+
+    if(bottom < 380){
+        dodger.style.bottom = `${bottom + 1}px`
+    }
+}
+
+function moveDodgerDown(){
+    const bottomNumbers = dodger.style.bottom.replace("px", "")
+    const bottom = parseInt(bottomNumbers, 10)
+
+    if(bottom > 0){
+        dodger.style.bottom = `${bottom - 1}px`
+    }
+}
+
+document.addEventListener("keydown", function(event){
+    if(event.key === "ArrowDown"){
+        moveDodgerDown()
+    } else if (event.key === "ArrowUp"){
+        moveDodgerUp()
+    } else if (event.key === "ArrowLeft"){
+        moveDodgerLeft()
+    } else if (event.key === "ArrowRight"){
         moveDodgerRight()
     }
 })
